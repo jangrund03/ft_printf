@@ -6,7 +6,7 @@
 /*   By: jagrund <jagrund@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 18:25:17 by jagrund           #+#    #+#             */
-/*   Updated: 2026/10/15 18:25:18 by jagrund          ###   ########.fr       */
+/*   Updated: 2026/10/17 17:56:26 by jagrund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-int ft_printf(const char *format, ...);
+int	ft_printf(const char *format, ...);
+int	ft_putstr(char *s);
 
 #endif

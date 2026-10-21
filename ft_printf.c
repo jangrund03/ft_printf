@@ -6,7 +6,7 @@
 /*   By: jagrund <jagrund@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 18:25:31 by jagrund           #+#    #+#             */
-/*   Updated: 2026/10/19 18:50:57 by jagrund          ###   ########.fr       */
+/*   Updated: 2026/10/21 21:02:24 by jagrund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_putchar(char c)
 	write(1, &c, 1);
 	return (1);
 }
-
 
 int	ft_putstr(char *s)
 {
@@ -74,6 +73,8 @@ static int	ft_handle_format(const char *format, va_list args, int *i)
 		return (ft_putuhexa(va_arg(args, unsigned int), "0123456789abcdef"));
 	if (format[*i] == 'X')
 		return (ft_putuhexa(va_arg(args, unsigned int), "0123456789ABCDEF"));
+	if (format[*i] == 'p')
+		return (ft_putptr((unsigned long)va_arg(args, void *)));
 	return (0);
 }
 
@@ -92,7 +93,8 @@ int	ft_printf(const char *format, ...)
 		{
 			i += 1;
 			count += ft_handle_format(format, args, &i);
-			i += 1;
+			if (format[i])
+				i += 1;
 		}
 		else
 		{
@@ -103,12 +105,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	return (count);
-}
-
-int	main(void)
-{
-	int	r;
-
-	r = ft_putuhexa(255, "0123456789abcdef");
-	return (0);
 }
